@@ -10,7 +10,7 @@ public class CacheTest {
     /**
      * A simple test DataProvider that returns whatever is passed in as input as a string (via toString())
      */
-    private class EchoProvider implements DataProvider<Integer, String> {
+    private static class EchoProvider implements DataProvider<Integer, String> {
         private Integer lastCall;
 
         @Override
@@ -99,6 +99,54 @@ public class CacheTest {
         assertEquals(cache.getNumMisses(), 10);
     }
 
+    /**
+     * Check if we run in liner time just throw a warning if not
+     */
+    @Test
+    public void checkLinearTime(){
+        int smallCacheSize = 100;
+        int largeCacheSize = 100000;
+        // Set up the small cache and fill it up
+        DataProvider<Integer, String> providerSmall = new EchoProvider();
+        Cache<Integer, String> cacheSmall = new LRUCache<>(providerSmall, smallCacheSize);
+        fillCache(smallCacheSize, cacheSmall);
+
+        // Test how long small cache size takes to run
+        long smallStartTime = System.currentTimeMillis();
+//        System.out.println(smallStartTime);
+        for(int i = 0; i< smallCacheSize; i++){
+            if(System.currentTimeMillis()-smallStartTime > 3000){
+                System.out.println("Took took too long to run. We don't know if it runs int linear time or not. Quiting!!!");
+                System.exit(0);
+            }
+            cacheSmall.get(i);
+        }
+        long smallStopTime = System.currentTimeMillis();
+
+        // Set up the large cache and fill it up
+        DataProvider<Integer, String> providerLarge = new EchoProvider();
+        Cache<Integer, String> cacheLarge = new LRUCache<>(providerLarge, largeCacheSize);
+        fillCache(smallCacheSize, cacheLarge);
+
+        // Test how long large cache size takes to run
+        long largeStartTime = System.currentTimeMillis();
+        for(int i = 0; i< largeCacheSize; i++){
+            if(System.currentTimeMillis()-largeStartTime > 3000){
+                System.out.println("Took took too long to run. We don't know if it runs int linear time or not. Quiting!!!");
+                System.exit(0);
+            }
+            cacheLarge.get(i);
+        }
+        long largeStopTime = System.currentTimeMillis();
+
+        // Find the diff in times
+        long diffOfAverageTimeTaken = Math.abs((smallStopTime / smallStartTime) - (largeStopTime / largeStartTime));
+
+
+        if(diffOfAverageTimeTaken < 2 ){
+            System.out.println("We think this is running in linear time");
+        }else System.out.println("This does not seem to be linear time");
+    }
 
     /**
      * fills cache with n. If we get 3 as n we will fill the cache with 0, 1, 2

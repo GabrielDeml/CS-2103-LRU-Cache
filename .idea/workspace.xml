@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/junit/hamcrest-core-1.3.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/junit/junit-4.12.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/hamcrest_core_1_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/junit_4_12.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/intellij/Cache.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/intellij/Cache.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/intellij/DataProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/intellij/DataProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/intellij/LRUCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/intellij/LRUCache.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest$EchoProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest$EchoProvider.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/CacheTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/CacheTest.java" afterDir="false" />
     </list>
@@ -36,6 +29,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/junit/junit-4.12.jar!/" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
