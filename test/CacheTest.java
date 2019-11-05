@@ -100,46 +100,37 @@ public class CacheTest {
     public void checkLinearTime() {
         int smallCacheSize = 100;
         int largeCacheSize = 100000;
-        // Set up the small cache and fill it up
-        DataProvider<Integer, String> providerSmall = new EchoProvider();
-        Cache<Integer, String> cacheSmall = new LRUCache<>(providerSmall, smallCacheSize);
-        fillCache(smallCacheSize, cacheSmall);
 
-        // Test how long small cache size takes to run
-        long smallStartTime = System.currentTimeMillis();
-//        System.out.println(smallStartTime);
-        for (int i = 0; i < smallCacheSize; i++) {
-            if (System.currentTimeMillis() - smallStartTime > 3000) {
-                System.out.println("Took took too long to run. We don't know if it runs int linear time or not. Quiting!!!");
-                System.exit(0);
-            }
-            cacheSmall.get(i);
-        }
-        long smallStopTime = System.currentTimeMillis();
-
-        // Set up the large cache and fill it up
-        DataProvider<Integer, String> providerLarge = new EchoProvider();
-        Cache<Integer, String> cacheLarge = new LRUCache<>(providerLarge, largeCacheSize);
-        fillCache(smallCacheSize, cacheLarge);
-
-        // Test how long large cache size takes to run
-        long largeStartTime = System.currentTimeMillis();
-        for (int i = 0; i < largeCacheSize; i++) {
-            if (System.currentTimeMillis() - largeStartTime > 3000) {
-                System.out.println("Took took too long to run. We don't know if it runs int linear time or not. Quiting!!!");
-                System.exit(0);
-            }
-            cacheLarge.get(i);
-        }
-        long largeStopTime = System.currentTimeMillis();
+        long smallTime = checkHowLongItTakes(smallCacheSize);
+        long longTime = checkHowLongItTakes(largeCacheSize);
 
         // Find the diff in times
-        long diffOfAverageTimeTaken = Math.abs((smallStopTime / smallStartTime) - (largeStopTime / largeStartTime));
+        long diffOfAverageTimeTaken = Math.abs((smallTime / smallCacheSize) - (longTime / largeCacheSize));
 
 
         if (diffOfAverageTimeTaken < 2) {
             System.out.println("We think this is running in linear time");
         } else System.out.println("This does not seem to be linear time");
+    }
+
+    private long checkHowLongItTakes(int numOfElements) {
+        // Set up the large cache and fill it up
+        DataProvider<Integer, String> provider = new EchoProvider();
+        Cache<Integer, String> cache = new LRUCache<>(provider, numOfElements);
+        fillCache(numOfElements, cache);
+
+        // Test how long small cache size takes to run
+        long StartTime = System.currentTimeMillis();
+//        System.out.println(smallStartTime);
+        for (int i = 0; i < numOfElements; i++) {
+            if (System.currentTimeMillis() - numOfElements > 3000) {
+                System.out.println("Took took too long to run. We don't know if it runs int linear time or not. Quiting!!!");
+                System.exit(0);
+            }
+            cache.get(i);
+        }
+        long StopTime = System.currentTimeMillis();
+        return StartTime - StartTime;
     }
 
     /**
