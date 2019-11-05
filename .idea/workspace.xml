@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="">
+    <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="Fixed a style issue in ConstantTimeQueue">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ConstantTimeQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConstantTimeQueue.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -90,7 +91,8 @@
       <updated>1572713444278</updated>
       <workItem from="1572713450420" duration="6250000" />
       <workItem from="1572808967518" duration="1647000" />
-      <workItem from="1572992760208" duration="3978000" />
+      <workItem from="1572992760208" duration="4564000" />
+      <workItem from="1572997351895" duration="275000" />
     </task>
     <task id="LOCAL-00001" summary="Better handling of capacity in LRUCache. Cleaned up tests.">
       <created>1572916793267</created>
@@ -106,7 +108,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572920907307</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="ConstantTimeQueue should now work in constant time">
+      <created>1572997005028</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1572997005029</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,6 +137,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Better handling of capacity in LRUCache. Cleaned up tests." />
     <MESSAGE value="Switched to own queue implementation (removal of items does not work properly rn)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Switched to own queue implementation (removal of items does not work properly rn)" />
+    <MESSAGE value="ConstantTimeQueue should now work in constant time" />
+    <option name="LAST_COMMIT_MESSAGE" value="ConstantTimeQueue should now work in constant time" />
   </component>
 </project>

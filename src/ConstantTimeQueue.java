@@ -1,4 +1,5 @@
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A queue implementation that has constant time operations for enqueue, dequeue, and remove
@@ -47,7 +48,7 @@ public class ConstantTimeQueue<T> {
      * This is solely used to keep the remove method in constant time
      * For an explanation of why this was chosen, see the class javadoc
      */
-    private HashMap<T, Node> parentsToKey;
+    private Map<T, Node> parentsToKey;
 
     /**
      * Constructs an empty ConstantTimeQueue
@@ -115,6 +116,26 @@ public class ConstantTimeQueue<T> {
      */
     public int size() {
         return size;
+    }
+
+    /**
+     * Returns the data at the head of the queue
+     *
+     * @return the data at the head of the queue
+     */
+    public T getFirst() {
+        if (head == null) return null;
+        return head.data;
+    }
+
+    /**
+     * Returns the data at the tail of the queue
+     *
+     * @return the data at the tail of the queue
+     */
+    public T getLast() {
+        if (tail == null) return null;
+        return tail.data;
     }
 
     /**
