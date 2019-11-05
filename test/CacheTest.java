@@ -99,11 +99,14 @@ public class CacheTest {
     @Test
     public void checkLinearTime() {
         int smallCacheSize = 100;
-        int largeCacheSize = 100000;
+        int mediumCacheSize = 10000;
+        int largeCacheSize =  10000000;
 
         long smallTime = checkHowLongItTakes(smallCacheSize);
+        long mediumTime = checkHowLongItTakes(mediumCacheSize);
         long longTime = checkHowLongItTakes(largeCacheSize);
-
+        System.out.println("small time : " + smallTime + " medium time : " + mediumTime + " long time : " + longTime);
+        System.out.println("small time : " + smallTime / smallCacheSize + " medium time : " + longTime / mediumCacheSize + " long time : " + longTime / largeCacheSize);
         // Find the diff in times
         long diffOfAverageTimeTaken = Math.abs((smallTime / smallCacheSize) - (longTime / largeCacheSize));
 
@@ -123,14 +126,14 @@ public class CacheTest {
         long StartTime = System.currentTimeMillis();
 //        System.out.println(smallStartTime);
         for (int i = 0; i < numOfElements; i++) {
-            if (System.currentTimeMillis() - numOfElements > 3000) {
+            if (System.currentTimeMillis() - StartTime > 3000) {
                 System.out.println("Took took too long to run. We don't know if it runs int linear time or not. Quiting!!!");
                 System.exit(0);
             }
             cache.get(i);
         }
         long StopTime = System.currentTimeMillis();
-        return StartTime - StartTime;
+        return StopTime - StartTime;
     }
 
     /**
