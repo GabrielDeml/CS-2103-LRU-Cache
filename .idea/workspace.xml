@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/intellij/LRUCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/intellij/LRUCache.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest$EchoProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest$EchoProvider.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LRUCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LRUCache.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/CacheTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/CacheTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />

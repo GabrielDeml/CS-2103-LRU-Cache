@@ -1,6 +1,5 @@
 import static org.junit.Assert.*;
 
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -19,17 +18,14 @@ public class CacheTest {
             return key.toString();
         }
 
-        public Integer getLastCall() {
+        Integer getLastCall() {
             return this.lastCall;
         }
-
     }
-
 
     /**
      * Does a thorough test of the LRU algorithm used by the LRUCache
      */
-
     @Test
     public void leastRecentlyUsedIsCorrect() {
         DataProvider<Integer, String> provider = new EchoProvider(); // Need to instantiate an actual DataProvider
@@ -56,32 +52,32 @@ public class CacheTest {
     }
 
     /**
-     * Checks to make sure that we don't go over the cache size.
+     * Checks to make sure that we don't go over the cache size
      */
     @Test
     public void overFillCache() {
-        DataProvider<Integer, String> provider = new EchoProvider();
-        Cache<Integer, String> cache = new LRUCache<>(provider, 10);
-        fillCache(11, cache);
+        EchoProvider provider = new EchoProvider();
+        final int capacity = 10;
+        Cache<Integer, String> cache = new LRUCache<>(provider, capacity);
+        fillCache(capacity + 1, cache);
         cache.get(0);
-        assertTrue(0 == ((EchoProvider) provider).getLastCall());
+        assertEquals(0, (int) provider.getLastCall());
+        assertEquals(capacity + 2, cache.getNumMisses());
     }
 
     /**
-     * Check to make sure the cache actually stores stuff.
+     * Check to make sure the cache actually stores stuff
      */
     @Test
     public void checkThatTheCacheCachesThings() {
         // Just picked a reasonable number it really can be any int bigger than zero
-        int numOfElements = 4;
-        DataProvider<Integer, String> provider = new EchoProvider();
+        final int numOfElements = 4;
+        EchoProvider provider = new EchoProvider();
         Cache<Integer, String> cache = new LRUCache<>(provider, numOfElements);
         fillCache(numOfElements, cache);
         for (int i = 0; i < numOfElements - 1; i++) {
-//            System.out.println(i);
             cache.get(i);
-//            System.out.println(((EchoProvider) provider).getLastCall());
-            assertTrue(((EchoProvider) provider).getLastCall() != i);
+            assertEquals(numOfElements - 1, (int) provider.getLastCall());
         }
     }
 
@@ -90,20 +86,18 @@ public class CacheTest {
      */
     @Test
     public void checkWhenCacheSizeIsZero() {
-        int numOfElements = 10;
+        final int numOfElements = 10;
         DataProvider<Integer, String> provider = new EchoProvider();
         Cache<Integer, String> cache = new LRUCache<>(provider, 0);
-        for (int i = 0; i < numOfElements; i++) {
-            cache.get(i);
-        }
-        assertEquals(cache.getNumMisses(), 10);
+        for (int i = 0; i < numOfElements; i++) cache.get(i);
+        assertEquals(10, cache.getNumMisses());
     }
 
     /**
-     * Check if we run in liner time just throw a warning if not
+     * Check if we run in linear time just throw a warning if not
      */
     @Test
-    public void checkLinearTime(){
+    public void checkLinearTime() {
         int smallCacheSize = 100;
         int largeCacheSize = 100000;
         // Set up the small cache and fill it up
@@ -114,8 +108,8 @@ public class CacheTest {
         // Test how long small cache size takes to run
         long smallStartTime = System.currentTimeMillis();
 //        System.out.println(smallStartTime);
-        for(int i = 0; i< smallCacheSize; i++){
-            if(System.currentTimeMillis()-smallStartTime > 3000){
+        for (int i = 0; i < smallCacheSize; i++) {
+            if (System.currentTimeMillis() - smallStartTime > 3000) {
                 System.out.println("Took took too long to run. We don't know if it runs int linear time or not. Quiting!!!");
                 System.exit(0);
             }
@@ -130,8 +124,8 @@ public class CacheTest {
 
         // Test how long large cache size takes to run
         long largeStartTime = System.currentTimeMillis();
-        for(int i = 0; i< largeCacheSize; i++){
-            if(System.currentTimeMillis()-largeStartTime > 3000){
+        for (int i = 0; i < largeCacheSize; i++) {
+            if (System.currentTimeMillis() - largeStartTime > 3000) {
                 System.out.println("Took took too long to run. We don't know if it runs int linear time or not. Quiting!!!");
                 System.exit(0);
             }
@@ -143,21 +137,20 @@ public class CacheTest {
         long diffOfAverageTimeTaken = Math.abs((smallStopTime / smallStartTime) - (largeStopTime / largeStartTime));
 
 
-        if(diffOfAverageTimeTaken < 2 ){
+        if (diffOfAverageTimeTaken < 2) {
             System.out.println("We think this is running in linear time");
-        }else System.out.println("This does not seem to be linear time");
+        } else System.out.println("This does not seem to be linear time");
     }
 
     /**
-     * fills cache with n. If we get 3 as n we will fill the cache with 0, 1, 2
+     * Fills the supplied cache with n elements, from 0 to n-1 (assuming its capacity is high enough)
+     * Example: if n is 3, the cache's .get() will be called with 0, 1, & 2
      *
-     * @param n     the number of things to fill the cache with
-     * @param cache cache that to add to
+     * @param n     the number of integers to fill the cache with
+     * @param cache the cache to fill
      */
     private void fillCache(int n, Cache<Integer, String> cache) {
-        for (int i = 0; i < n; i++) {
-            cache.get(i);
-        }
+        for (int i = 0; i < n; i++) cache.get(i);
     }
 }
 
