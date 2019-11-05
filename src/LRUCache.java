@@ -1,7 +1,5 @@
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.Queue;
 
 /**
  * An implementation of <tt>Cache</tt> that uses a least-recently-used (LRU)
@@ -19,7 +17,7 @@ public class LRUCache<T, U> implements Cache<T, U> {
     /**
      * Acts as a queue of the keys. Oldest keys are at the head and should be removed first.
      */
-    private final Queue<T> keys;
+    private final ConstantTimeQueue<T> keys;
     /**
      * The actual cache of the data from the DataProvider
      */
@@ -34,7 +32,7 @@ public class LRUCache<T, U> implements Cache<T, U> {
      * @param capacity the exact number of (key,value) pairs to store in the cache
      */
     public LRUCache(DataProvider<T, U> provider, int capacity) {
-        keys = new LinkedList<>();
+        keys = new ConstantTimeQueue<>();
         // "If the initial capacity is greater than the maximum number of entries divided by the load factor,
         //   no rehash operations will ever occur."
         // From Java 8 Documentation: https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html
@@ -70,7 +68,7 @@ public class LRUCache<T, U> implements Cache<T, U> {
      * Removes the oldest item in the cache
      */
     private void removeOldest() {
-        cache.remove(keys.poll());
+        cache.remove(keys.dequeue());
     }
 
     /**
@@ -80,7 +78,7 @@ public class LRUCache<T, U> implements Cache<T, U> {
      * @param value the value to add to the cache
      */
     private void addToCache(T key, U value) {
-        keys.add(key);
+        keys.enqueue(key);
         cache.put(key, value);
     }
 
@@ -91,7 +89,7 @@ public class LRUCache<T, U> implements Cache<T, U> {
      */
     private void makeMostRecentTransaction(T key) {
         keys.remove(key);
-        keys.add(key);
+        keys.enqueue(key);
     }
 
     /**

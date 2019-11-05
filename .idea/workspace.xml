@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ConstantTimeQueue.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/QueueTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/intellij/LRUCache.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/intellij/LRUCache.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest$EchoProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest$EchoProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LRUCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LRUCache.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/CacheTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/CacheTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,7 +52,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.CacheTest">
     <configuration name="CacheTest" type="JUnit" factoryName="JUnit">
       <module name="intellij" />
       <option name="PACKAGE_NAME" value="" />
@@ -67,6 +64,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="QueueTest" type="JUnit" factoryName="JUnit">
+      <module name="intellij" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="QueueTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.CacheTest" />
+      <item itemvalue="JUnit.QueueTest" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -81,6 +93,14 @@
       <workItem from="1572713450420" duration="6250000" />
       <workItem from="1572808967518" duration="1647000" />
     </task>
+    <task id="LOCAL-00001" summary="Better handling of capacity in LRUCache. Cleaned up tests.">
+      <created>1572916793267</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1572916793267</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -98,5 +118,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Better handling of capacity in LRUCache. Cleaned up tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Better handling of capacity in LRUCache. Cleaned up tests." />
   </component>
 </project>
