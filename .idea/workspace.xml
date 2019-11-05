@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/ConstantTimeQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/QueueTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LRUCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LRUCache.java" afterDir="false" />
-
+      <change beforePath="$PROJECT_DIR$/src/ConstantTimeQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConstantTimeQueue.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,6 +90,7 @@
       <updated>1572713444278</updated>
       <workItem from="1572713450420" duration="6250000" />
       <workItem from="1572808967518" duration="1647000" />
+      <workItem from="1572992760208" duration="3978000" />
     </task>
     <task id="LOCAL-00001" summary="Better handling of capacity in LRUCache. Cleaned up tests.">
       <created>1572916793267</created>
@@ -101,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572916793267</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Switched to own queue implementation (removal of items does not work properly rn)">
+      <created>1572920907307</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1572920907307</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +127,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Better handling of capacity in LRUCache. Cleaned up tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Better handling of capacity in LRUCache. Cleaned up tests." />
+    <MESSAGE value="Switched to own queue implementation (removal of items does not work properly rn)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Switched to own queue implementation (removal of items does not work properly rn)" />
   </component>
 </project>
