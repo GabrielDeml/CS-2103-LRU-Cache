@@ -73,6 +73,27 @@ public class QueueTest {
         assertNull(keys.getLast());
     }
 
+    @Test
+    public void testRemoveMiddle() {
+        ConstantTimeQueue<Character> queue = new ConstantTimeQueue<>();
+        for (char c = 'a'; c <= 'g'; ++c) queue.enqueue(c);
+        assertEquals("a, b, c, d, e, f, g", queue.toString());
+        queue.remove('d');
+        assertEquals("a, b, c, e, f, g", queue.toString());
+        queue.remove('e');
+        assertEquals("a, b, c, f, g", queue.toString());
+        queue.remove('c');
+        assertEquals("a, b, f, g", queue.toString());
+        queue.remove('f');
+        assertEquals("a, b, g", queue.toString());
+        queue.remove('b');
+        assertEquals("a, g", queue.toString());
+        queue.remove('g');
+        assertEquals("a", queue.toString());
+        queue.remove('a');
+        assertEquals("", queue.toString());
+    }
+
     /**
      * A helper method that fills up a queue with varying integers
      *

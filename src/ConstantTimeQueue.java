@@ -3,9 +3,8 @@ import java.util.Map;
 
 /**
  * A queue implementation that has constant time operations for enqueue, dequeue, and remove
- * This is achieved by keeping a HashMap of the values that are stored in the queue mapped to their Node's parent Node
- * (Having access to the parent's Node allows you to remove the node in question by doing node.next = node.next.next)
- * The HashMap is to a Node's parent versus the Node itself because I did not want to implement a doubly linked list
+ * This is achieved by keeping a HashMap of the values that are stored in the queue mapped to their corresponding Node
+ * (Having access to the Node associated with the key allows you to do node.previous.next = node.previous.next.next)
  *
  * @param <T> The type of data this ConstantTimeQueue should store
  */
@@ -19,9 +18,9 @@ public class ConstantTimeQueue<T> {
          */
         T data;
         /**
-         * The next node in the queue
+         * The next and previous nodes in the queue
          */
-        Node next = null;
+        Node next, previous;
 
         /**
          * Constructs a Node with the given data
@@ -30,6 +29,19 @@ public class ConstantTimeQueue<T> {
          */
         Node(T data) {
             this.data = data;
+            next = previous = null;
+        }
+
+        /**
+         * Constructs a Node with the given data that points to the next and previous nodes
+         *
+         * @param data     the data to construct a Node with
+         * @param previous the previous Node in the queue (can be null)
+         */
+        Node(T data, Node previous) {
+            this.data = data;
+            this.next = null;
+            this.previous = previous;
         }
     }
 
@@ -44,11 +56,11 @@ public class ConstantTimeQueue<T> {
      */
     private int size;
     /**
-     * A map of each key to its associated Node's parent's Node
+     * A map of each key to its associated Node
      * This is solely used to keep the remove method in constant time
-     * For an explanation of why this was chosen, see the class javadoc
+     * For an explanation of why this was chosen, see the class' javadoc
      */
-    private Map<T, Node> parentsToKey;
+    private Map<T, Node> nodeCache;
 
     /**
      * Constructs an empty ConstantTimeQueue
@@ -56,7 +68,7 @@ public class ConstantTimeQueue<T> {
     public ConstantTimeQueue() {
         head = tail = null;
         size = 0;
-        parentsToKey = new HashMap<>();
+        nodeCache = new HashMap<>();
     }
 
     /**
@@ -67,13 +79,12 @@ public class ConstantTimeQueue<T> {
     public void enqueue(T data) {
         if (head == null) head = tail = new Node(data); // first element enqueue (queue is currently empty)
         else if (head == tail) { // second element enqueue (queue currently contains just 1 item)
-            parentsToKey.put(data, head); // add the parent to the data's Node to the map
-            head.next = tail = new Node(data); // add the Node to the queue
+            head.next = tail = new Node(data, head); // add the Node to the queue
         } else { // past second element enqueue (queue currently contains more than 1 item)
-            parentsToKey.put(data, tail); // add the parent to the data's Node to the map
-            tail.next = new Node(data); // add an element to the end
+            tail.next = new Node(data, tail); // add an element to the end
             tail = tail.next; // move tail to the end
         }
+        nodeCache.put(data, tail); // add the most recently added node to the nodeCache
         size++;
     }
 
@@ -86,11 +97,12 @@ public class ConstantTimeQueue<T> {
         if (head == null) return;
         if (head.data.equals(data)) dequeue(); // simply remove the head because that is what we want to remove
         else {
-            if (!parentsToKey.containsKey(data)) return; // data not found in queue, so abort
+            if (!nodeCache.containsKey(data)) return; // data not found in queue, so abort
             size--;
-            final Node pointer = parentsToKey.remove(data); // a reference the parent of the Node we want to remove
-            pointer.next = pointer.next.next; // skip over the node we want to remove, effectively removing it
-            if (pointer.next == null) tail = pointer; // reset the tail if it was what we just removed
+            final Node previous = nodeCache.remove(data).previous; // the parent to the node we want to remove
+            previous.next = previous.next.next; // skip over the node we want to remove, effectively removing it
+            if (previous.next == null) tail = previous; // reset the tail if it was what we just removed
+            else previous.next.previous = previous; // fix the dependency
         }
     }
 
@@ -103,9 +115,10 @@ public class ConstantTimeQueue<T> {
         if (head == null) return null;
         size--;
         final T returnVal = head.data;
-        parentsToKey.remove(returnVal); // remove the head's key from the map (if it is in there, which it may not)
+        nodeCache.remove(returnVal); // remove the head's key to head mapping from the nodeCache
         head = head.next; // skip over the head, effectively removing it
         if (head == null) tail = null; // queue is empty so reset the tail
+        else head.previous = null;
         return returnVal;
     }
 

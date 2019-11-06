@@ -29,6 +29,7 @@ public class CacheTest {
     @Test
     public void leastRecentlyUsedIsCorrect() {
         DataProvider<Integer, String> provider = new EchoProvider(); // Need to instantiate an actual DataProvider
+        // Generic test of LRU
         for (int capacity = 0; capacity < 100; ++capacity) {
             Cache<Integer, String> cache = new LRUCache<>(provider, capacity);
             for (int i = 0; i < capacity * 2; ++i) {
@@ -49,6 +50,46 @@ public class CacheTest {
                 assertEquals(3 * capacity, cache.getNumMisses());
             }
         }
+        // See testEvictMiddle for another test of LRU
+    }
+
+    /**
+     * Test to see whether we can remove back to back elements in the middle of the queue supported by the cache
+     * This indirectly tests the cache's underlying queue's ability to remove back to back elements
+     */
+    @Test
+    public void testEvictMiddle() {
+        DataProvider<Integer, String> provider = new EchoProvider();
+        Cache<Integer, String> cache = new LRUCache<>(provider, 7);
+        fillCache(7, cache);
+        // old 0 1 2 3 4 5 6 new
+        assertEquals("3", cache.get(3));
+        // old 0 1 2 4 5 6 3 new
+        assertEquals("4", cache.get(4));
+        // old 0 1 2 5 6 3 4 new
+        assertEquals("5", cache.get(5));
+        // old 0 1 2 6 3 4 5 new
+        assertEquals("2", cache.get(2));
+        // old 0 1 6 3 4 5 2 new
+        assertEquals(7, cache.getNumMisses());
+        cache.get(7); // not present in cache. Testing to see if evict 0
+        // old 1 6 3 4 5 2 7 new
+        assertEquals(8, cache.getNumMisses());
+        cache.get(0); // also not present in the cache. Should result in a miss
+        // old 6 3 4 5 2 7 0 new
+        assertEquals(9, cache.getNumMisses());
+        cache.get(6);
+        // old 3 4 5 2 7 0 6 new
+        assertEquals(9, cache.getNumMisses());
+        cache.get(8);
+        // old 4 5 2 7 0 6 8 new
+        assertEquals(10, cache.getNumMisses());
+        cache.get(9);
+        // old 5 2 7 0 6 8 9 new
+        assertEquals(11, cache.getNumMisses());
+        cache.get(4);
+        // old 2 7 0 6 8 9 4 new
+        assertEquals(12, cache.getNumMisses());
     }
 
     /**
@@ -104,5 +145,3 @@ public class CacheTest {
         for (int i = 0; i < n; i++) cache.get(i);
     }
 }
-
-

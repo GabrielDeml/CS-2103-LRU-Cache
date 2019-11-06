@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ConstantTimeQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConstantTimeQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/CacheTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/CacheTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/QueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/QueueTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -93,7 +94,9 @@
       <workItem from="1572808967518" duration="1647000" />
       <workItem from="1572992760208" duration="4564000" />
       <workItem from="1572997351895" duration="1553000" />
-      <workItem from="1573001592897" duration="2902000" />
+      <workItem from="1573001592897" duration="3242000" />
+      <workItem from="1573052863225" duration="946000" />
+      <workItem from="1573054246753" duration="3048000" />
     </task>
     <task id="LOCAL-00001" summary="Better handling of capacity in LRUCache. Cleaned up tests.">
       <created>1572916793267</created>
@@ -123,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572997793868</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Cleaned up tests">
+      <created>1573008473105</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573008473105</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -147,6 +157,7 @@
     <MESSAGE value="Switched to own queue implementation (removal of items does not work properly rn)" />
     <MESSAGE value="ConstantTimeQueue should now work in constant time" />
     <MESSAGE value="Fixed a style issue in ConstantTimeQueue and created a getFirst and getLast" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed a style issue in ConstantTimeQueue and created a getFirst and getLast" />
+    <MESSAGE value="Cleaned up tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up tests" />
   </component>
 </project>
