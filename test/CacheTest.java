@@ -82,6 +82,18 @@ public class CacheTest {
     }
 
     /**
+     * Checks when cache size is 0 we always get things from the provider
+     */
+    @Test
+    public void checkWhenCacheSizeIsZero() {
+        final int numOfElements = 10;
+        DataProvider<Integer, String> provider = new EchoProvider();
+        Cache<Integer, String> cache = new LRUCache<>(provider, 0);
+        for (int i = 0; i < numOfElements; i++) cache.get(i);
+        assertEquals(10, cache.getNumMisses());
+    }
+
+    /**
      * Fills the supplied cache with n elements, from 0 to n-1 (assuming its capacity is high enough)
      * Example: if n is 3, the cache's .get() will be called with 0, 1, & 2
      *
