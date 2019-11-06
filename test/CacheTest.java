@@ -11,15 +11,21 @@ public class CacheTest {
      */
     private static class EchoProvider implements DataProvider<Integer, String> {
         private Integer lastCall;
+        private int numRequests = 0;
 
         @Override
         public String get(Integer key) {
             this.lastCall = key;
+            numRequests++;
             return key.toString();
         }
 
-        Integer getLastCall() {
+        private Integer getLastCall() {
             return this.lastCall;
+        }
+
+        private int getNumRequests() {
+            return numRequests;
         }
     }
 
@@ -59,7 +65,7 @@ public class CacheTest {
      */
     @Test
     public void testEvictMiddle() {
-        DataProvider<Integer, String> provider = new EchoProvider();
+        EchoProvider provider = new EchoProvider();
         Cache<Integer, String> cache = new LRUCache<>(provider, 7);
         fillCache(7, cache);
         // old 0 1 2 3 4 5 6 new
@@ -72,24 +78,31 @@ public class CacheTest {
         assertEquals("2", cache.get(2));
         // old 0 1 6 3 4 5 2 new
         assertEquals(7, cache.getNumMisses());
+        assertEquals(7, provider.getNumRequests());
         cache.get(7); // not present in cache. Testing to see if evict 0
         // old 1 6 3 4 5 2 7 new
         assertEquals(8, cache.getNumMisses());
+        assertEquals(8, provider.getNumRequests());
         cache.get(0); // also not present in the cache. Should result in a miss
         // old 6 3 4 5 2 7 0 new
         assertEquals(9, cache.getNumMisses());
+        assertEquals(9, provider.getNumRequests());
         cache.get(6);
         // old 3 4 5 2 7 0 6 new
         assertEquals(9, cache.getNumMisses());
+        assertEquals(9, provider.getNumRequests());
         cache.get(8);
         // old 4 5 2 7 0 6 8 new
         assertEquals(10, cache.getNumMisses());
+        assertEquals(10, provider.getNumRequests());
         cache.get(9);
         // old 5 2 7 0 6 8 9 new
         assertEquals(11, cache.getNumMisses());
+        assertEquals(11, provider.getNumRequests());
         cache.get(4);
         // old 2 7 0 6 8 9 4 new
         assertEquals(12, cache.getNumMisses());
+        assertEquals(12, provider.getNumRequests());
     }
 
     /**

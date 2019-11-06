@@ -27,7 +27,7 @@ public class ConstantTimeQueue<T> {
          *
          * @param data the data to construct a Node with
          */
-        Node(T data) {
+        private Node(T data) {
             this.data = data;
             next = previous = null;
         }
@@ -38,7 +38,7 @@ public class ConstantTimeQueue<T> {
          * @param data     the data to construct a Node with
          * @param previous the previous Node in the queue (can be null)
          */
-        Node(T data, Node previous) {
+        private Node(T data, Node previous) {
             this.data = data;
             this.next = null;
             this.previous = previous;
@@ -65,6 +65,7 @@ public class ConstantTimeQueue<T> {
     /**
      * Constructs an empty ConstantTimeQueue
      */
+    @SuppressWarnings("WeakerAccess")
     public ConstantTimeQueue() {
         head = tail = null;
         size = 0;
@@ -76,6 +77,7 @@ public class ConstantTimeQueue<T> {
      *
      * @param data the data to enqueue
      */
+    @SuppressWarnings("WeakerAccess")
     public void enqueue(T data) {
         if (head == null) head = tail = new Node(data); // first element enqueue (queue is currently empty)
         else if (head == tail) { // second element enqueue (queue currently contains just 1 item)
@@ -93,6 +95,7 @@ public class ConstantTimeQueue<T> {
      *
      * @param data the data to remove from the queue
      */
+    @SuppressWarnings("WeakerAccess")
     public void remove(T data) {
         if (head == null) return;
         if (head.data.equals(data)) dequeue(); // simply remove the head because that is what we want to remove
@@ -111,6 +114,7 @@ public class ConstantTimeQueue<T> {
      *
      * @return the data that was dequeued
      */
+    @SuppressWarnings("WeakerAccess")
     public T dequeue() {
         if (head == null) return null;
         size--;
@@ -127,6 +131,7 @@ public class ConstantTimeQueue<T> {
      *
      * @return the size of the queue
      */
+    @SuppressWarnings("WeakerAccess")
     public int size() {
         return size;
     }
@@ -136,6 +141,7 @@ public class ConstantTimeQueue<T> {
      *
      * @return the data at the head of the queue
      */
+    @SuppressWarnings("WeakerAccess")
     public T getFirst() {
         if (head == null) return null;
         return head.data;
@@ -146,6 +152,7 @@ public class ConstantTimeQueue<T> {
      *
      * @return the data at the tail of the queue
      */
+    @SuppressWarnings("WeakerAccess")
     public T getLast() {
         if (tail == null) return null;
         return tail.data;

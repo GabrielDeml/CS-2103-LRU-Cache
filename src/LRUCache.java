@@ -31,6 +31,7 @@ public class LRUCache<T, U> implements Cache<T, U> {
      * @param provider the data provider to consult for a cache miss
      * @param capacity the exact number of (key,value) pairs to store in the cache
      */
+    @SuppressWarnings("WeakerAccess")
     public LRUCache(DataProvider<T, U> provider, int capacity) {
         keys = new ConstantTimeQueue<>();
         // "If the initial capacity is greater than the maximum number of entries divided by the load factor,

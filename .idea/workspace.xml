@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="Reduced scope of Node fields in ConstantTimeQueue">
-      <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" afterDir="false" />
+    <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="Hardened a test to prevent against lazy coding in LRUCache">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ConstantTimeQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConstantTimeQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LRUCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LRUCache.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/CacheTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/CacheTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,6 +26,7 @@
   <component name="ProjectId" id="1T4JTlPwOrRjAj6Am4uOVt7FM6x" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/junit/junit-4.12.jar!/" />
@@ -50,7 +53,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CacheTest">
+  <component name="RunManager" selected="JUnit.QueueTest">
     <configuration name="CacheTest" type="JUnit" factoryName="JUnit">
       <module name="intellij" />
       <option name="PACKAGE_NAME" value="" />
@@ -94,7 +97,8 @@
       <workItem from="1572997351895" duration="1553000" />
       <workItem from="1573001592897" duration="3242000" />
       <workItem from="1573052863225" duration="946000" />
-      <workItem from="1573054246753" duration="3289000" />
+      <workItem from="1573054246753" duration="3346000" />
+      <workItem from="1573058530178" duration="545000" />
     </task>
     <task id="LOCAL-00001" summary="Better handling of capacity in LRUCache. Cleaned up tests.">
       <created>1572916793267</created>
@@ -138,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573057458501</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Reduced scope of Node fields in ConstantTimeQueue">
+      <created>1573057557576</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1573057557576</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +175,8 @@
     <MESSAGE value="Fixed a style issue in ConstantTimeQueue and created a getFirst and getLast" />
     <MESSAGE value="Cleaned up tests" />
     <MESSAGE value="Fixed ConstantTimeQueue implementation and added a cache test" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed ConstantTimeQueue implementation and added a cache test" />
+    <MESSAGE value="Reduced scope of Node fields in ConstantTimeQueue" />
+    <MESSAGE value="Hardened a test to prevent against lazy coding in LRUCache" />
+    <option name="LAST_COMMIT_MESSAGE" value="Hardened a test to prevent against lazy coding in LRUCache" />
   </component>
 </project>
