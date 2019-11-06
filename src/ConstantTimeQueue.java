@@ -16,11 +16,11 @@ public class ConstantTimeQueue<T> {
         /**
          * The data the node stores
          */
-        T data;
+        private T data;
         /**
          * The next and previous nodes in the queue
          */
-        Node next, previous;
+        private Node next, previous;
 
         /**
          * Constructs a Node with the given data

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="eb5ca12d-df67-4c4a-ad80-c99289b20540" name="Default Changelist" comment="Reduced scope of Node fields in ConstantTimeQueue">
+      <change beforePath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/intellij/CacheTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ConstantTimeQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ConstantTimeQueue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/CacheTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/CacheTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/QueueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/QueueTest.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +50,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.QueueTest">
+  <component name="RunManager" selected="JUnit.CacheTest">
     <configuration name="CacheTest" type="JUnit" factoryName="JUnit">
       <module name="intellij" />
       <option name="PACKAGE_NAME" value="" />
@@ -96,7 +94,7 @@
       <workItem from="1572997351895" duration="1553000" />
       <workItem from="1573001592897" duration="3242000" />
       <workItem from="1573052863225" duration="946000" />
-      <workItem from="1573054246753" duration="3048000" />
+      <workItem from="1573054246753" duration="3289000" />
     </task>
     <task id="LOCAL-00001" summary="Better handling of capacity in LRUCache. Cleaned up tests.">
       <created>1572916793267</created>
@@ -133,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1573008473105</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixed ConstantTimeQueue implementation and added a cache test">
+      <created>1573057458501</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1573057458501</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +163,7 @@
     <MESSAGE value="ConstantTimeQueue should now work in constant time" />
     <MESSAGE value="Fixed a style issue in ConstantTimeQueue and created a getFirst and getLast" />
     <MESSAGE value="Cleaned up tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up tests" />
+    <MESSAGE value="Fixed ConstantTimeQueue implementation and added a cache test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed ConstantTimeQueue implementation and added a cache test" />
   </component>
 </project>
