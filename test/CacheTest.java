@@ -82,61 +82,6 @@ public class CacheTest {
     }
 
     /**
-     * Checks when cache size is 0 we always get things from the provider
-     */
-    @Test
-    public void checkWhenCacheSizeIsZero() {
-        final int numOfElements = 10;
-        DataProvider<Integer, String> provider = new EchoProvider();
-        Cache<Integer, String> cache = new LRUCache<>(provider, 0);
-        for (int i = 0; i < numOfElements; i++) cache.get(i);
-        assertEquals(10, cache.getNumMisses());
-    }
-
-    /**
-     * Check if we run in linear time just throw a warning if not
-     */
-    @Test
-    public void checkLinearTime() {
-        int smallCacheSize = 100;
-        int mediumCacheSize = 10000;
-        int largeCacheSize =  10000000;
-
-        long smallTime = checkHowLongItTakes(smallCacheSize);
-        long mediumTime = checkHowLongItTakes(mediumCacheSize);
-        long longTime = checkHowLongItTakes(largeCacheSize);
-        System.out.println("small time : " + smallTime + " medium time : " + mediumTime + " long time : " + longTime);
-        System.out.println("small time : " + smallTime / smallCacheSize + " medium time : " + longTime / mediumCacheSize + " long time : " + longTime / largeCacheSize);
-        // Find the diff in times
-        long diffOfAverageTimeTaken = Math.abs((smallTime / smallCacheSize) - (longTime / largeCacheSize));
-
-
-        if (diffOfAverageTimeTaken < 2) {
-            System.out.println("We think this is running in linear time");
-        } else System.out.println("This does not seem to be linear time");
-    }
-
-    private long checkHowLongItTakes(int numOfElements) {
-        // Set up the large cache and fill it up
-        DataProvider<Integer, String> provider = new EchoProvider();
-        Cache<Integer, String> cache = new LRUCache<>(provider, numOfElements);
-        fillCache(numOfElements, cache);
-
-        // Test how long small cache size takes to run
-        long StartTime = System.currentTimeMillis();
-//        System.out.println(smallStartTime);
-        for (int i = 0; i < numOfElements; i++) {
-            if (System.currentTimeMillis() - StartTime > 3000) {
-                System.out.println("Took took too long to run. We don't know if it runs int linear time or not. Quiting!!!");
-                System.exit(0);
-            }
-            cache.get(i);
-        }
-        long StopTime = System.currentTimeMillis();
-        return StopTime - StartTime;
-    }
-
-    /**
      * Fills the supplied cache with n elements, from 0 to n-1 (assuming its capacity is high enough)
      * Example: if n is 3, the cache's .get() will be called with 0, 1, & 2
      *
